@@ -44,7 +44,7 @@ const Navbar = () => {
           className="flex items-center"
         >
           <a href="#home" className="text-2xl font-extrabold tracking-tight text-gradient">
-            Portfolio<span className="text-accent">.</span>
+            ABDUL MOIZ<span className="text-accent">.</span>
           </a>
         </motion.div>
 
