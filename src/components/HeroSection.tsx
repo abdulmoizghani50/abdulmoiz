@@ -27,8 +27,18 @@ const HeroSection = () => {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-glow"
         >
-          <span className="block">MERN Stack Developer</span>
-          <span className="block mt-2">& UI/UX Designer</span>
+          <motion.span 
+            className="block"
+            whileHover={{ scale: 1.05, color: "#9b87f5", transition: { duration: 0.3 } }}
+          >
+            MERN Stack Developer
+          </motion.span>
+          <motion.span 
+            className="block mt-2"
+            whileHover={{ scale: 1.05, color: "#06d6a0", transition: { duration: 0.3 } }}
+          >
+            & UI/UX Designer
+          </motion.span>
         </motion.h1>
         
         <motion.div
@@ -51,7 +61,7 @@ const HeroSection = () => {
         >
           <motion.a
             href="#projects"
-            whileHover={{ scale: 1.05 }}
+            whileHover={{ scale: 1.05, backgroundColor: "#33a8b5" }}
             whileTap={{ scale: 0.95 }}
             className="px-8 py-3 rounded-lg bg-accent text-accent-foreground font-medium shadow-lg hover:shadow-accent/20 transition-all"
           >
@@ -59,7 +69,7 @@ const HeroSection = () => {
           </motion.a>
           <motion.a
             href="#contact"
-            whileHover={{ scale: 1.05 }}
+            whileHover={{ scale: 1.05, backgroundColor: "rgba(255,255,255,0.1)" }}
             whileTap={{ scale: 0.95 }}
             className="px-8 py-3 rounded-lg bg-transparent border border-white/20 text-white font-medium hover:bg-white/5 transition-all"
           >
@@ -81,7 +91,14 @@ const HeroSection = () => {
             <motion.a
               key={social.label}
               href={social.href}
-              whileHover={{ y: -5 }}
+              whileHover={{ y: -5, scale: 1.2 }}
+              whileTap={{ scale: 0.9 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ 
+                opacity: 1, 
+                y: 0,
+                transition: { delay: 0.5 + (index * 0.1) } 
+              }}
               className="text-foreground/70 hover:text-accent transition-colors"
               aria-label={social.label}
             >
@@ -92,9 +109,15 @@ const HeroSection = () => {
         
         <motion.div
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1, duration: 1 }}
-          className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce"
+          animate={{ 
+            opacity: [0, 1, 0.5, 1],
+            y: [0, 10, 0, 10],
+            transition: { 
+              opacity: { repeat: Infinity, duration: 2 },
+              y: { repeat: Infinity, duration: 2 }
+            }
+          }}
+          className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
         >
           <a href="#about" aria-label="Scroll down">
             <ArrowDown className="text-accent" size={24} />

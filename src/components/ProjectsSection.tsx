@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { ExternalLink, Github } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ExternalLink, Github, X } from 'lucide-react';
 
 type Project = {
   id: number;
@@ -54,6 +54,7 @@ const projects: Project[] = [
 
 const ProjectsSection = () => {
   const [activeProject, setActiveProject] = useState<Project | null>(null);
+  const [hoveredId, setHoveredId] = useState<number | null>(null);
 
   return (
     <section id="projects" className="py-20 relative overflow-hidden">
@@ -82,64 +83,91 @@ const ProjectsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              whileHover={{ y: -5 }}
-              className="glass-card rounded-xl overflow-hidden group"
+              whileHover={{ y: -10, transition: { duration: 0.3 } }}
+              className="glass-card rounded-xl overflow-hidden group cursor-pointer"
               onClick={() => setActiveProject(project)}
+              onMouseEnter={() => setHoveredId(project.id)}
+              onMouseLeave={() => setHoveredId(null)}
             >
               <div className="relative overflow-hidden h-60">
-                <img 
+                <motion.img 
                   src={project.image} 
                   alt={project.title} 
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  className="w-full h-full object-cover transition-transform duration-500"
+                  animate={{
+                    scale: hoveredId === project.id ? 1.1 : 1,
+                  }}
+                  transition={{ duration: 0.5 }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent"></div>
                 <div className="absolute bottom-0 left-0 w-full p-4">
                   <h3 className="text-xl font-bold mb-1 text-white">{project.title}</h3>
-                  <div className="flex flex-wrap gap-2 mt-2">
-                    {project.tags.slice(0, 3).map((tag) => (
-                      <span 
+                  <motion.div 
+                    className="flex flex-wrap gap-2 mt-2"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.2 }}
+                  >
+                    {project.tags.slice(0, 3).map((tag, tagIndex) => (
+                      <motion.span 
                         key={tag} 
                         className="text-xs px-2 py-1 rounded-full bg-accent/20 text-white/90"
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.1 * tagIndex }}
                       >
                         {tag}
-                      </span>
+                      </motion.span>
                     ))}
                     {project.tags.length > 3 && (
-                      <span className="text-xs px-2 py-1 rounded-full bg-white/10 text-white/90">
+                      <motion.span 
+                        className="text-xs px-2 py-1 rounded-full bg-white/10 text-white/90"
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.3 }}
+                      >
                         +{project.tags.length - 3}
-                      </span>
+                      </motion.span>
                     )}
-                  </div>
+                  </motion.div>
                 </div>
               </div>
               <div className="p-5">
                 <p className="text-foreground/70 mb-4 text-sm">{project.description}</p>
                 <div className="flex justify-between items-center">
                   <div className="flex space-x-3">
-                    <a 
+                    <motion.a 
                       href={project.githubUrl} 
                       className="text-foreground/60 hover:text-accent transition-colors"
                       aria-label="GitHub repository"
+                      whileHover={{ scale: 1.2, rotate: 10 }}
+                      whileTap={{ scale: 0.9 }}
+                      onClick={(e) => e.stopPropagation()}
                     >
                       <Github size={20} />
-                    </a>
-                    <a 
+                    </motion.a>
+                    <motion.a 
                       href={project.liveUrl} 
                       className="text-foreground/60 hover:text-accent transition-colors"
                       aria-label="Live project"
+                      whileHover={{ scale: 1.2, rotate: -10 }}
+                      whileTap={{ scale: 0.9 }}
+                      onClick={(e) => e.stopPropagation()}
                     >
                       <ExternalLink size={20} />
-                    </a>
+                    </motion.a>
                   </div>
-                  <button 
+                  <motion.button 
                     className="text-sm text-accent hover:underline transition-colors"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
                     onClick={(e) => {
                       e.stopPropagation();
                       setActiveProject(project);
                     }}
                   >
                     View Details
-                  </button>
+                  </motion.button>
                 </div>
               </div>
             </motion.div>
@@ -147,59 +175,117 @@ const ProjectsSection = () => {
         </div>
 
         {/* Project Modal */}
-        {activeProject && (
-          <div 
-            className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4"
-            onClick={() => setActiveProject(null)}
-          >
+        <AnimatePresence>
+          {activeProject && (
             <motion.div 
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              transition={{ duration: 0.3 }}
-              className="max-w-3xl w-full bg-card rounded-xl p-6 md:p-8 max-h-[90vh] overflow-y-auto neo-border"
-              onClick={(e) => e.stopPropagation()}
+              className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setActiveProject(null)}
             >
-              <div className="rounded-lg overflow-hidden mb-6">
-                <img 
-                  src={activeProject.image} 
-                  alt={activeProject.title} 
-                  className="w-full h-auto object-cover"
-                />
-              </div>
-              <h3 className="text-2xl font-bold mb-3">{activeProject.title}</h3>
-              <p className="text-foreground/80 mb-4">{activeProject.description}</p>
-              <div className="flex flex-wrap gap-2 mb-6">
-                {activeProject.tags.map((tag) => (
-                  <span 
-                    key={tag} 
-                    className="text-xs px-3 py-1 rounded-full bg-accent/20 text-white/90"
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.9, y: 20 }}
+                transition={{ 
+                  type: "spring", 
+                  damping: 20, 
+                  stiffness: 300 
+                }}
+                className="max-w-3xl w-full bg-card rounded-xl p-6 md:p-8 max-h-[90vh] overflow-y-auto neo-border relative"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <motion.button
+                  className="absolute top-4 right-4 z-10 bg-background/50 backdrop-blur-sm rounded-full p-2"
+                  whileHover={{ scale: 1.1, rotate: 90 }}
+                  whileTap={{ scale: 0.9 }}
+                  onClick={() => setActiveProject(null)}
+                >
+                  <X className="text-white" size={20} />
+                </motion.button>
+
+                <motion.div 
+                  className="rounded-lg overflow-hidden mb-6"
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ delay: 0.2 }}
+                >
+                  <img 
+                    src={activeProject.image} 
+                    alt={activeProject.title} 
+                    className="w-full h-auto object-cover"
+                  />
+                </motion.div>
+                
+                <motion.h3 
+                  className="text-2xl font-bold mb-3"
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ delay: 0.3 }}
+                >
+                  {activeProject.title}
+                </motion.h3>
+                
+                <motion.p 
+                  className="text-foreground/80 mb-4"
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ delay: 0.4 }}
+                >
+                  {activeProject.description}
+                </motion.p>
+                
+                <motion.div 
+                  className="flex flex-wrap gap-2 mb-6"
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ delay: 0.5 }}
+                >
+                  {activeProject.tags.map((tag, index) => (
+                    <motion.span 
+                      key={tag} 
+                      className="text-xs px-3 py-1 rounded-full bg-accent/20 text-white/90"
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.5 + (index * 0.1) }}
+                    >
+                      {tag}
+                    </motion.span>
+                  ))}
+                </motion.div>
+                
+                <motion.div 
+                  className="flex space-x-4"
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ delay: 0.6 }}
+                >
+                  <motion.a 
+                    href={activeProject.liveUrl} 
+                    className="px-5 py-2 rounded-lg bg-accent text-accent-foreground font-medium shadow-lg hover:shadow-accent/20 transition-all"
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.05, backgroundColor: "#33a8b5" }}
+                    whileTap={{ scale: 0.95 }}
                   >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-              <div className="flex space-x-4">
-                <a 
-                  href={activeProject.liveUrl} 
-                  className="px-5 py-2 rounded-lg bg-accent text-accent-foreground font-medium shadow-lg hover:shadow-accent/20 transition-all"
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                >
-                  Live Demo
-                </a>
-                <a 
-                  href={activeProject.githubUrl} 
-                  className="px-5 py-2 rounded-lg bg-transparent border border-white/20 text-white font-medium hover:bg-white/5 transition-all flex items-center gap-2"
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                >
-                  <Github size={18} /> View Code
-                </a>
-              </div>
+                    Live Demo
+                  </motion.a>
+                  <motion.a 
+                    href={activeProject.githubUrl} 
+                    className="px-5 py-2 rounded-lg bg-transparent border border-white/20 text-white font-medium hover:bg-white/5 transition-all flex items-center gap-2"
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.05, backgroundColor: "rgba(255,255,255,0.1)" }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <Github size={18} /> View Code
+                  </motion.a>
+                </motion.div>
+              </motion.div>
             </motion.div>
-          </div>
-        )}
+          )}
+        </AnimatePresence>
       </div>
     </section>
   );
