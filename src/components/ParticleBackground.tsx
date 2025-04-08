@@ -26,6 +26,10 @@ const ParticleBackground = () => {
           color: {
             value: "transparent",
           },
+          image: "",
+          position: "50% 50%",
+          repeat: "no-repeat",
+          size: "cover"
         },
         particles: {
           number: {
@@ -135,14 +139,7 @@ const ParticleBackground = () => {
             }
           }
         },
-        retina_detect: true,
-        background: {
-          color: "transparent",
-          image: "",
-          position: "50% 50%",
-          repeat: "no-repeat",
-          size: "cover"
-        }
+        retina_detect: true
       }}
     />
   );
