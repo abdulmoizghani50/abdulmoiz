@@ -55,7 +55,15 @@ const Navbar = () => {
           transition={{ duration: 0.5, delay: 0.1 }}
           className="hidden md:flex space-x-8 items-center"
         >
-          {['home', 'about', 'projects', 'skills', 'contact'].map((item, index) => (
+          {[
+            'home',
+            'about',
+            'services',
+            'projects',
+            'testimonials',
+            'team',
+            'contact'
+          ].map((item, index) => (
             <motion.a
               key={item}
               href={`#${item}`}
@@ -67,13 +75,14 @@ const Navbar = () => {
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300"></span>
             </motion.a>
           ))}
-          <motion.button
+          <motion.a
+            href="#contact"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="px-5 py-2 rounded-lg bg-accent text-accent-foreground shadow-md hover:shadow-lg transition-all"
           >
-            Resume
-          </motion.button>
+            Get Started
+          </motion.a>
         </motion.nav>
 
         {/* Mobile Menu Button */}
@@ -98,7 +107,15 @@ const Navbar = () => {
             className="absolute top-full left-0 w-full bg-background/95 backdrop-blur-md py-4 shadow-lg md:hidden border-t border-white/10"
           >
             <nav className="flex flex-col space-y-4 px-6">
-              {['home', 'about', 'projects', 'skills', 'contact'].map((item) => (
+              {[
+                'home', 
+                'about', 
+                'services', 
+                'projects', 
+                'testimonials', 
+                'team',
+                'contact'
+              ].map((item) => (
                 <a
                   key={item}
                   href={`#${item}`}
@@ -108,9 +125,13 @@ const Navbar = () => {
                   {item}
                 </a>
               ))}
-              <button className="mt-2 px-4 py-2 rounded-lg bg-accent text-accent-foreground shadow-md">
-                Resume
-              </button>
+              <a 
+                href="#contact" 
+                className="mt-2 px-4 py-2 rounded-lg bg-accent text-accent-foreground shadow-md"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Get Started
+              </a>
             </nav>
           </motion.div>
         )}

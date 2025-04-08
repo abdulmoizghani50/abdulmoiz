@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowDown, Github, Linkedin, Twitter } from 'lucide-react';
+import { ArrowDown, ChevronRight, Code, Database, Globe, Layers } from 'lucide-react';
 import ParticleBackground from './ParticleBackground';
 
 const HeroSection = () => {
@@ -9,15 +9,15 @@ const HeroSection = () => {
     <section id="home" className="relative min-h-screen flex items-center overflow-hidden pt-20">
       <ParticleBackground />
       
-      <div className="container mx-auto px-4 py-20 flex flex-col justify-center items-center text-center z-10">
+      <div className="container mx-auto px-4 py-20 flex flex-col justify-center items-center lg:items-start z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="mb-4"
+          className="mb-4 w-full text-center lg:text-left"
         >
           <span className="text-accent text-lg md:text-xl font-medium">
-            Hello, I'm a
+            Innovative Software Solutions
           </span>
         </motion.div>
         
@@ -25,19 +25,19 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-glow"
+          className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-glow text-center lg:text-left"
         >
           <motion.span 
             className="block"
-            whileHover={{ scale: 1.05, color: "#9b87f5", transition: { duration: 0.3 } }}
+            whileHover={{ scale: 1.02, color: "#9b87f5", transition: { duration: 0.3 } }}
           >
-            MERN Stack Developer
+            We Build Powerful
           </motion.span>
           <motion.span 
             className="block mt-2"
-            whileHover={{ scale: 1.05, color: "#06d6a0", transition: { duration: 0.3 } }}
+            whileHover={{ scale: 1.02, color: "#06d6a0", transition: { duration: 0.3 } }}
           >
-            & UI/UX Designer
+            Digital Solutions
           </motion.span>
         </motion.h1>
         
@@ -45,11 +45,11 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="max-w-2xl mx-auto"
+          className="max-w-2xl mx-auto lg:mx-0 text-center lg:text-left"
         >
           <p className="text-xl text-foreground/80 mb-8">
-            I create stunning web applications with modern technologies and pixel-perfect design.
-            Specialized in building full-stack solutions with the MERN stack.
+            Delivering cutting-edge software development and intuitive UX/UI design 
+            to transform your business in the digital landscape.
           </p>
         </motion.div>
         
@@ -57,15 +57,16 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="flex flex-col sm:flex-row gap-4 mb-12"
+          className="flex flex-col sm:flex-row gap-4 mb-12 w-full justify-center lg:justify-start"
         >
           <motion.a
-            href="#projects"
+            href="#services"
             whileHover={{ scale: 1.05, backgroundColor: "#33a8b5" }}
             whileTap={{ scale: 0.95 }}
-            className="px-8 py-3 rounded-lg bg-accent text-accent-foreground font-medium shadow-lg hover:shadow-accent/20 transition-all"
+            className="px-8 py-3 rounded-lg bg-accent text-accent-foreground font-medium shadow-lg hover:shadow-accent/20 transition-all flex items-center justify-center gap-2"
           >
-            View My Work
+            Our Services
+            <ChevronRight size={18} />
           </motion.a>
           <motion.a
             href="#contact"
@@ -73,37 +74,32 @@ const HeroSection = () => {
             whileTap={{ scale: 0.95 }}
             className="px-8 py-3 rounded-lg bg-transparent border border-white/20 text-white font-medium hover:bg-white/5 transition-all"
           >
-            Contact Me
+            Get in Touch
           </motion.a>
         </motion.div>
         
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="flex space-x-6 mb-16"
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-6 w-full max-w-3xl mx-auto lg:mx-0 mt-8"
         >
           {[
-            { icon: Github, href: "#", label: "GitHub" },
-            { icon: Linkedin, href: "#", label: "LinkedIn" },
-            { icon: Twitter, href: "#", label: "Twitter" },
-          ].map((social, index) => (
-            <motion.a
-              key={social.label}
-              href={social.href}
-              whileHover={{ y: -5, scale: 1.2 }}
-              whileTap={{ scale: 0.9 }}
+            { icon: <Code className="text-accent" size={24} />, label: "Custom Software" },
+            { icon: <Globe className="text-accent" size={24} />, label: "Web Development" },
+            { icon: <Layers className="text-accent" size={24} />, label: "UI/UX Design" },
+            { icon: <Database className="text-accent" size={24} />, label: "Cloud Solutions" }
+          ].map((item, index) => (
+            <motion.div
+              key={index}
               initial={{ opacity: 0, y: 20 }}
-              animate={{ 
-                opacity: 1, 
-                y: 0,
-                transition: { delay: 0.5 + (index * 0.1) } 
-              }}
-              className="text-foreground/70 hover:text-accent transition-colors"
-              aria-label={social.label}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.5 + (index * 0.1) }}
+              className="glass-card flex flex-col items-center p-4 rounded-lg"
             >
-              <social.icon size={24} />
-            </motion.a>
+              {item.icon}
+              <span className="text-sm mt-2 text-foreground/80">{item.label}</span>
+            </motion.div>
           ))}
         </motion.div>
         
