@@ -26,14 +26,10 @@ const ParticleBackground = () => {
           color: {
             value: "transparent",
           },
-          image: "",
-          position: "50% 50%",
-          repeat: "no-repeat",
-          size: "cover"
         },
         particles: {
           number: {
-            value: 80,
+            value: 100,
             density: {
               enable: true,
               value_area: 800
@@ -43,13 +39,13 @@ const ParticleBackground = () => {
             value: ["#7658f5", "#06d6a0", "#0077b6", "#33a8b5"]
           },
           shape: {
-            type: ["circle", "triangle", "polygon", "edge"],
+            type: ["circle", "triangle", "polygon"],
             polygon: {
               sides: 6
             },
           },
           opacity: {
-            value: 0.3,
+            value: 0.2,
             random: true,
             anim: {
               enable: true,
@@ -59,7 +55,7 @@ const ParticleBackground = () => {
             }
           },
           size: {
-            value: { min: 1, max: 5 },
+            value: { min: 1, max: 4 },
             random: true,
             anim: {
               enable: true,
@@ -71,7 +67,7 @@ const ParticleBackground = () => {
           line_linked: {
             enable: true,
             distance: 150,
-            color: "random",
+            color: "#9b87f5",
             opacity: 0.2,
             width: 1,
             triangles: {
@@ -82,7 +78,7 @@ const ParticleBackground = () => {
           },
           move: {
             enable: true,
-            speed: 1.2,
+            speed: 0.8,
             direction: "none",
             random: true,
             straight: false,
