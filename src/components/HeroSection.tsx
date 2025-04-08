@@ -43,7 +43,7 @@ const HeroSection = () => {
   ];
 
   return (
-    <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden">
+    <section id="home" className="relative min-h-screen flex items-center justify-center pt-24 pb-16 overflow-hidden">
       <ParticleBackground />
       
       <div className="absolute inset-0 z-0">
@@ -81,12 +81,12 @@ const HeroSection = () => {
         />
       </div>
       
-      <div className="container relative mx-auto px-6 z-10 text-center">
+      <div className="container mx-auto px-6 z-10 flex flex-col items-center justify-center mt-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="mb-4"
+          className="mb-6 text-center"
         >
           <motion.span 
             className="text-accent text-lg md:text-xl font-medium inline-block"
@@ -99,7 +99,7 @@ const HeroSection = () => {
           </motion.span>
         </motion.div>
         
-        <div className="h-[120px] md:h-[150px] mb-6 flex items-center justify-center">
+        <div className="h-[120px] md:h-[150px] mb-8 flex items-center justify-center">
           <AnimatePresence mode="wait">
             {isVisible && (
               <motion.h1
@@ -108,7 +108,7 @@ const HeroSection = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.5 }}
-                className="text-4xl md:text-6xl lg:text-7xl font-bold text-glow max-w-5xl"
+                className="text-4xl md:text-6xl lg:text-7xl font-bold text-glow max-w-5xl text-center"
               >
                 <motion.span 
                   className="block"
@@ -121,7 +121,7 @@ const HeroSection = () => {
           </AnimatePresence>
         </div>
         
-        <div className="h-[80px] md:h-[60px] mb-10 flex items-center justify-center">
+        <div className="h-[80px] md:h-[60px] mb-12 flex items-center justify-center">
           <AnimatePresence mode="wait">
             {isVisible && (
               <motion.p
@@ -130,7 +130,7 @@ const HeroSection = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
-                className="text-lg md:text-xl text-foreground/80 max-w-2xl mx-auto"
+                className="text-lg md:text-xl text-foreground/80 max-w-2xl mx-auto text-center"
               >
                 {descriptions[currentSlide]}
               </motion.p>
@@ -142,13 +142,13 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="flex flex-col sm:flex-row gap-6 mb-16 justify-center"
+          className="flex flex-col sm:flex-row gap-6 mb-16 justify-center w-full max-w-md mx-auto"
         >
           <motion.a
             href="#services"
             whileHover={{ scale: 1.05, backgroundColor: "#33a8b5" }}
             whileTap={{ scale: 0.95 }}
-            className="px-8 py-4 rounded-lg bg-accent text-accent-foreground font-medium shadow-lg hover:shadow-accent/20 transition-all flex items-center justify-center gap-2"
+            className="px-8 py-4 rounded-lg bg-accent text-accent-foreground font-medium shadow-lg hover:shadow-accent/20 transition-all flex items-center justify-center gap-2 w-full sm:w-auto"
           >
             Our Services
             <ChevronRight size={18} />
@@ -157,7 +157,7 @@ const HeroSection = () => {
             href="#contact"
             whileHover={{ scale: 1.05, backgroundColor: "rgba(255,255,255,0.1)" }}
             whileTap={{ scale: 0.95 }}
-            className="px-8 py-4 rounded-lg bg-transparent border border-white/20 text-white font-medium hover:bg-white/5 transition-all"
+            className="px-8 py-4 rounded-lg bg-transparent border border-white/20 text-white font-medium hover:bg-white/5 transition-all w-full sm:w-auto text-center"
           >
             Get in Touch
           </motion.a>
@@ -167,7 +167,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-4 w-full max-w-5xl mx-auto"
+          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6 w-full max-w-6xl mx-auto"
         >
           {services.map((service, index) => (
             <motion.div
@@ -181,7 +181,7 @@ const HeroSection = () => {
                 backgroundColor: "rgba(255,255,255,0.1)" 
               }}
               className={cn(
-                "glass-card flex flex-col items-center p-4 md:p-5 rounded-lg transition-all duration-300",
+                "glass-card flex flex-col items-center p-5 md:p-6 rounded-lg transition-all duration-300",
                 "cursor-pointer hover:border-accent/30"
               )}
             >
@@ -190,10 +190,11 @@ const HeroSection = () => {
                   y: [0, -5, 0],
                 }}
                 transition={{ duration: 2, repeat: Infinity, delay: index * 0.2 }}
+                className="mb-3"
               >
                 {service.icon}
               </motion.div>
-              <span className="text-xs md:text-sm font-medium mt-2 text-foreground/80">{service.label}</span>
+              <span className="text-sm md:text-base font-medium text-foreground/90">{service.label}</span>
             </motion.div>
           ))}
         </motion.div>

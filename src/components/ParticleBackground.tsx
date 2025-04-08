@@ -29,33 +29,36 @@ const ParticleBackground = () => {
         },
         particles: {
           number: {
-            value: 100,
+            value: 80,
             density: {
               enable: true,
-              value_area: 800
+              value_area: 900
             }
           },
           color: {
-            value: ["#7658f5", "#06d6a0", "#0077b6", "#33a8b5"]
+            value: ["#7658f5", "#06d6a0", "#0077b6", "#33a8b5", "#9b87f5"]
           },
           shape: {
-            type: ["circle", "triangle", "polygon"],
+            type: ["circle", "triangle", "polygon", "star"],
             polygon: {
               sides: 6
             },
+            star: {
+              sides: 5
+            }
           },
           opacity: {
-            value: 0.2,
+            value: 0.3,
             random: true,
             anim: {
               enable: true,
-              speed: 0.5,
+              speed: 0.4,
               opacity_min: 0.1,
               sync: false
             }
           },
           size: {
-            value: { min: 1, max: 4 },
+            value: { min: 1, max: 5 },
             random: true,
             anim: {
               enable: true,
@@ -78,7 +81,7 @@ const ParticleBackground = () => {
           },
           move: {
             enable: true,
-            speed: 0.8,
+            speed: 0.6,
             direction: "none",
             random: true,
             straight: false,
@@ -88,6 +91,18 @@ const ParticleBackground = () => {
               enable: true,
               rotateX: 600,
               rotateY: 1200
+            }
+          },
+          twinkle: {
+            particles: {
+              enable: true,
+              frequency: 0.05,
+              opacity: 1
+            },
+            lines: {
+              enable: true,
+              frequency: 0.005,
+              opacity: 1
             }
           }
         },
@@ -100,7 +115,7 @@ const ParticleBackground = () => {
               parallax: {
                 enable: true,
                 force: 60,
-                smooth: 10
+                smooth: 15
               }
             },
             onClick: {
@@ -111,16 +126,16 @@ const ParticleBackground = () => {
           },
           modes: {
             grab: {
-              distance: 180,
+              distance: 200,
               line_linked: {
-                opacity: 0.35
+                opacity: 0.4
               }
             },
             bubble: {
               distance: 200,
-              size: 12,
+              size: 15,
               duration: 2,
-              opacity: 0.4,
+              opacity: 0.5,
               speed: 3
             },
             repulse: {
@@ -135,7 +150,14 @@ const ParticleBackground = () => {
             }
           }
         },
-        retina_detect: true
+        retina_detect: true,
+        motion: {
+          disable: false,
+          reduce: {
+            factor: 4,
+            value: true
+          }
+        }
       }}
     />
   );
