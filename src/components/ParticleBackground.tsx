@@ -27,95 +27,122 @@ const ParticleBackground = () => {
             value: "transparent",
           },
         },
-        interactivity: {
-          events: {
-            onClick: {
+        particles: {
+          number: {
+            value: 80,
+            density: {
               enable: true,
-              mode: "push",
+              value_area: 800
+            }
+          },
+          color: {
+            value: ["#7658f5", "#06d6a0", "#0077b6", "#33a8b5"]
+          },
+          shape: {
+            type: ["circle", "triangle", "polygon", "edge"],
+            polygon: {
+              sides: 6
             },
+          },
+          opacity: {
+            value: 0.3,
+            random: true,
+            anim: {
+              enable: true,
+              speed: 0.5,
+              opacity_min: 0.1,
+              sync: false
+            }
+          },
+          size: {
+            value: { min: 1, max: 5 },
+            random: true,
+            anim: {
+              enable: true,
+              speed: 1,
+              size_min: 0.3,
+              sync: false
+            }
+          },
+          line_linked: {
+            enable: true,
+            distance: 150,
+            color: "random",
+            opacity: 0.2,
+            width: 1,
+            triangles: {
+              enable: true,
+              opacity: 0.05,
+              color: "#7658f5"
+            }
+          },
+          move: {
+            enable: true,
+            speed: 1.2,
+            direction: "none",
+            random: true,
+            straight: false,
+            out_mode: "out",
+            bounce: false,
+            attract: {
+              enable: true,
+              rotateX: 600,
+              rotateY: 1200
+            }
+          }
+        },
+        interactivity: {
+          detect_on: "canvas",
+          events: {
             onHover: {
               enable: true,
-              mode: "repulse",
+              mode: ["grab", "bubble"],
               parallax: {
                 enable: true,
                 force: 60,
                 smooth: 10
               }
             },
-            resize: true,
+            onClick: {
+              enable: true,
+              mode: "push"
+            },
+            resize: true
           },
           modes: {
-            push: {
-              quantity: 4,
+            grab: {
+              distance: 180,
+              line_linked: {
+                opacity: 0.35
+              }
+            },
+            bubble: {
+              distance: 200,
+              size: 12,
+              duration: 2,
+              opacity: 0.4,
+              speed: 3
             },
             repulse: {
-              distance: 150,
-              duration: 0.4,
+              distance: 100,
+              duration: 0.4
             },
-          },
+            push: {
+              particles_nb: 4
+            },
+            remove: {
+              particles_nb: 2
+            }
+          }
         },
-        particles: {
-          color: {
-            value: ["#7658f5", "#06d6a0", "#0077b6"],
-          },
-          links: {
-            color: "#ffffff",
-            distance: 150,
-            enable: true,
-            opacity: 0.2,
-            width: 1,
-            triangles: {
-              enable: true,
-              opacity: 0.05
-            }
-          },
-          move: {
-            direction: "none",
-            enable: true,
-            outModes: {
-              default: "bounce",
-            },
-            random: false,
-            speed: 0.8,
-            straight: false,
-            attract: {
-              enable: true,
-              rotateX: 600,
-              rotateY: 1200
-            }
-          },
-          number: {
-            density: {
-              enable: true,
-              area: 800,
-            },
-            value: 60,
-          },
-          opacity: {
-            value: 0.4,
-            random: true,
-            anim: {
-              enable: true,
-              speed: 0.2,
-              opacity_min: 0.1,
-              sync: false
-            }
-          },
-          shape: {
-            type: ["circle", "triangle", "polygon"],
-          },
-          size: {
-            value: { min: 1, max: 4 },
-            random: true,
-            anim: {
-              enable: true,
-              speed: 2,
-              size_min: 0.3,
-              sync: false
-            }
-          },
-        },
-        detectRetina: true,
+        retina_detect: true,
+        background: {
+          color: "transparent",
+          image: "",
+          position: "50% 50%",
+          repeat: "no-repeat",
+          size: "cover"
+        }
       }}
     />
   );
