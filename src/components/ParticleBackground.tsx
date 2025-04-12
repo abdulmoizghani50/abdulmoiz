@@ -39,12 +39,9 @@ const ParticleBackground = () => {
             value: ["#7658f5", "#06d6a0", "#0077b6", "#33a8b5", "#9b87f5"]
           },
           shape: {
-            type: ["circle", "triangle", "polygon", "star"],
+            type: ["circle", "triangle", "polygon"],
             polygon: {
               sides: 6
-            },
-            star: {
-              sides: 5
             }
           },
           opacity: {

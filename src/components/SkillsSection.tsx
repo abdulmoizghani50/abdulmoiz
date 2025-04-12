@@ -2,58 +2,64 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
+import { Code, Server, Layout, Globe, Database, Shield, Cpu, Cloud, GitBranch, BarChart } from 'lucide-react';
 
-type SkillCategory = {
+type ExpertiseCategory = {
   name: string;
+  icon: React.ReactNode;
   skills: {
     name: string;
     level: number;
   }[];
 };
 
-const skillCategories: SkillCategory[] = [
+const expertiseCategories: ExpertiseCategory[] = [
   {
-    name: "Frontend",
+    name: "Web Development",
+    icon: <Globe className="w-6 h-6 text-accent" />,
     skills: [
-      { name: "React", level: 90 },
+      { name: "React", level: 95 },
       { name: "JavaScript", level: 95 },
-      { name: "TypeScript", level: 85 },
+      { name: "TypeScript", level: 90 },
       { name: "HTML/CSS", level: 90 },
       { name: "Tailwind CSS", level: 88 },
-      { name: "Redux", level: 80 },
+      { name: "Redux", level: 85 },
     ]
   },
   {
-    name: "Backend",
+    name: "Backend Services",
+    icon: <Server className="w-6 h-6 text-accent" />,
     skills: [
-      { name: "Node.js", level: 88 },
-      { name: "Express", level: 85 },
-      { name: "MongoDB", level: 82 },
-      { name: "RESTful APIs", level: 90 },
-      { name: "GraphQL", level: 75 },
-      { name: "Socket.IO", level: 70 },
+      { name: "Node.js", level: 90 },
+      { name: "Express", level: 88 },
+      { name: "MongoDB", level: 85 },
+      { name: "RESTful APIs", level: 92 },
+      { name: "GraphQL", level: 80 },
+      { name: "Socket.IO", level: 78 },
     ]
   },
   {
-    name: "Design",
+    name: "Design & UI/UX",
+    icon: <Layout className="w-6 h-6 text-accent" />,
     skills: [
       { name: "UI/UX Design", level: 88 },
       { name: "Figma", level: 85 },
-      { name: "Adobe XD", level: 80 },
-      { name: "Responsive Design", level: 92 },
+      { name: "Adobe XD", level: 82 },
+      { name: "Responsive Design", level: 95 },
+      { name: "Design Systems", level: 88 },
       { name: "Prototyping", level: 85 },
-      { name: "Design Systems", level: 78 },
     ]
   },
   {
-    name: "Others",
+    name: "DevOps & Cloud",
+    icon: <Cloud className="w-6 h-6 text-accent" />,
     skills: [
       { name: "Git/GitHub", level: 90 },
-      { name: "CI/CD", level: 75 },
-      { name: "AWS", level: 70 },
-      { name: "Docker", level: 65 },
-      { name: "Jest", level: 75 },
-      { name: "Agile/Scrum", level: 85 },
+      { name: "CI/CD", level: 85 },
+      { name: "AWS", level: 80 },
+      { name: "Docker", level: 78 },
+      { name: "Kubernetes", level: 75 },
+      { name: "Azure", level: 75 },
     ]
   }
 ];
@@ -70,16 +76,16 @@ const SkillsSection = () => {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-3 inline-block text-gradient">
-            My Skills
+            Our Expertise
           </h2>
           <div className="w-20 h-1 bg-accent mx-auto mt-1 mb-6"></div>
           <p className="text-foreground/80 max-w-3xl mx-auto text-lg">
-            A comprehensive overview of my technical skills and expertise.
+            We deliver cutting-edge solutions with industry-leading technologies and methodologies.
           </p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {skillCategories.map((category, categoryIndex) => (
+          {expertiseCategories.map((category, categoryIndex) => (
             <motion.div
               key={category.name}
               initial={{ opacity: 0, y: 20 }}
@@ -88,10 +94,13 @@ const SkillsSection = () => {
               transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
               className="glass-card rounded-xl p-6"
             >
-              <h3 className="text-xl font-bold mb-6 inline-block relative">
-                {category.name}
-                <span className="absolute left-0 bottom-0 w-12 h-1 bg-accent"></span>
-              </h3>
+              <div className="flex items-center mb-6 gap-3">
+                {category.icon}
+                <h3 className="text-xl font-bold relative">
+                  {category.name}
+                  <span className="absolute left-0 -bottom-2 w-12 h-1 bg-accent"></span>
+                </h3>
+              </div>
               <div className="space-y-6">
                 {category.skills.map((skill, skillIndex) => (
                   <div key={skill.name} className="space-y-2">
@@ -126,15 +135,19 @@ const SkillsSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-16 glass-card rounded-xl p-8 text-center"
+          className="mt-16 glass-card rounded-xl p-8"
         >
-          <h3 className="text-xl font-bold mb-6">Technologies & Tools I Work With</h3>
+          <div className="flex items-center justify-center mb-6">
+            <GitBranch className="w-6 h-6 text-accent mr-3" />
+            <h3 className="text-xl font-bold">Technologies We Work With</h3>
+          </div>
           <div className="flex flex-wrap justify-center gap-4">
             {[
-              "React", "Node.js", "Express", "MongoDB", "JavaScript", 
+              "React", "Angular", "Vue.js", "Next.js", "Node.js", 
+              "Express", "MongoDB", "PostgreSQL", "JavaScript", 
               "TypeScript", "Redux", "Tailwind CSS", "Git", "Figma", 
-              "Adobe XD", "Webpack", "Jest", "GraphQL", "Next.js", 
-              "Socket.IO", "AWS", "Docker", "PostgreSQL"
+              "Adobe XD", "Webpack", "Jest", "GraphQL", "AWS", 
+              "Docker", "Kubernetes", "CI/CD", "Azure", "Firebase"
             ].map((tech, index) => (
               <motion.div
                 key={tech}
@@ -149,6 +162,18 @@ const SkillsSection = () => {
               </motion.div>
             ))}
           </div>
+        </motion.div>
+        
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="mt-12 text-center"
+        >
+          <p className="text-foreground/70 max-w-2xl mx-auto">
+            With a proven track record of successful project deliveries, our team consistently maintains high standards of quality and innovation in every solution we provide.
+          </p>
         </motion.div>
       </div>
     </section>
