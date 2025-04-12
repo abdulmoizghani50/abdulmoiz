@@ -2,7 +2,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
-import { Code, Server, Layout, Globe, Database, Shield, Cpu, Cloud, GitBranch, BarChart } from 'lucide-react';
+import { Code, Server, Layout, Globe, Database, Shield, Cpu, Cloud, GitBranch, BarChart, Bot, Sparkles, Brain, BrainCircuit } from 'lucide-react';
+import { Badge } from './ui/badge';
 
 type ExpertiseCategory = {
   name: string;
@@ -24,6 +25,18 @@ const expertiseCategories: ExpertiseCategory[] = [
       { name: "HTML/CSS", level: 90 },
       { name: "Tailwind CSS", level: 88 },
       { name: "Redux", level: 85 },
+    ]
+  },
+  {
+    name: "AI & Machine Learning",
+    icon: <BrainCircuit className="w-6 h-6 text-accent" />,
+    skills: [
+      { name: "Custom AI Chatbots", level: 92 },
+      { name: "RAG Systems", level: 90 },
+      { name: "LLM Fine-tuning", level: 85 },
+      { name: "Agentic AI Development", level: 88 },
+      { name: "Vector Databases", level: 87 },
+      { name: "AI Integration", level: 90 },
     ]
   },
   {
@@ -117,9 +130,10 @@ const SkillsSection = () => {
                         className={cn(
                           "h-full rounded-full",
                           categoryIndex === 0 ? "bg-glow-blue" :
-                          categoryIndex === 1 ? "bg-glow-teal" :
-                          categoryIndex === 2 ? "bg-glow-purple" :
-                          "bg-glow-pink"
+                          categoryIndex === 1 ? "bg-glow-purple" :
+                          categoryIndex === 2 ? "bg-glow-teal" :
+                          categoryIndex === 3 ? "bg-glow-pink" :
+                          "bg-glow-orange"
                         )}
                       />
                     </div>
@@ -147,7 +161,9 @@ const SkillsSection = () => {
               "Express", "MongoDB", "PostgreSQL", "JavaScript", 
               "TypeScript", "Redux", "Tailwind CSS", "Git", "Figma", 
               "Adobe XD", "Webpack", "Jest", "GraphQL", "AWS", 
-              "Docker", "Kubernetes", "CI/CD", "Azure", "Firebase"
+              "Docker", "Kubernetes", "CI/CD", "Azure", "Firebase",
+              "OpenAI", "LangChain", "Pinecone", "Hugging Face", 
+              "TensorFlow", "PyTorch", "Qdrant", "Chroma DB", "LlamaIndex"
             ].map((tech, index) => (
               <motion.div
                 key={tech}
@@ -169,10 +185,55 @@ const SkillsSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-12 text-center"
+          className="mt-16 text-center"
         >
+          <h3 className="text-2xl font-bold mb-6">AI & GenAI Solutions</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+            <motion.div 
+              whileHover={{ y: -10 }}
+              transition={{ duration: 0.3 }}
+              className="glass-card p-6 rounded-xl"
+            >
+              <div className="flex justify-center mb-4">
+                <Bot className="w-10 h-10 text-accent" />
+              </div>
+              <h4 className="text-xl font-semibold mb-3 text-center">Custom AI Chatbots</h4>
+              <p className="text-sm text-center text-foreground/70">
+                Tailored AI assistants trained on your specific data, documentation, and knowledge base.
+              </p>
+            </motion.div>
+            
+            <motion.div 
+              whileHover={{ y: -10 }}
+              transition={{ duration: 0.3 }}
+              className="glass-card p-6 rounded-xl"
+            >
+              <div className="flex justify-center mb-4">
+                <Brain className="w-10 h-10 text-accent" />
+              </div>
+              <h4 className="text-xl font-semibold mb-3 text-center">Agentic AI Systems</h4>
+              <p className="text-sm text-center text-foreground/70">
+                Autonomous AI agents that can perform complex tasks and make decisions with minimal human intervention.
+              </p>
+            </motion.div>
+            
+            <motion.div 
+              whileHover={{ y: -10 }}
+              transition={{ duration: 0.3 }}
+              className="glass-card p-6 rounded-xl"
+            >
+              <div className="flex justify-center mb-4">
+                <Sparkles className="w-10 h-10 text-accent" />
+              </div>
+              <h4 className="text-xl font-semibold mb-3 text-center">GenAI Integration</h4>
+              <p className="text-sm text-center text-foreground/70">
+                Seamless integration of generative AI capabilities into your existing products and workflows.
+              </p>
+            </motion.div>
+          </div>
+          
           <p className="text-foreground/70 max-w-2xl mx-auto">
-            With a proven track record of successful project deliveries, our team consistently maintains high standards of quality and innovation in every solution we provide.
+            With a proven track record of successful AI implementations, our team consistently maintains high standards of quality and innovation in every solution we provide.
           </p>
         </motion.div>
       </div>
