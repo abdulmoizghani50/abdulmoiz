@@ -43,8 +43,12 @@ const Navbar = () => {
           transition={{ duration: 0.5 }}
           className="flex items-center"
         >
-          <a href="#home" className="text-2xl font-extrabold tracking-tight text-gradient">
-            ABDUL MOIZ<span className="text-accent">.</span>
+          <a href="#home" className="flex items-center">
+            <img 
+              src="/lovable-uploads/2b690b19-c895-4ad0-ac07-5132a78687a3.png" 
+              alt="AM Solutions Logo" 
+              className="h-10 md:h-12" 
+            />
           </a>
         </motion.div>
 

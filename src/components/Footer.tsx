@@ -16,9 +16,13 @@ const Footer = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.4 }}
           >
-            <h3 className="text-2xl font-bold text-gradient mb-6">
-              ABDUL MOIZ<span className="text-accent">.</span>
-            </h3>
+            <div className="mb-6">
+              <img 
+                src="/lovable-uploads/2b690b19-c895-4ad0-ac07-5132a78687a3.png" 
+                alt="AM Solutions Logo" 
+                className="h-12" 
+              />
+            </div>
             <p className="text-foreground/60 text-sm mb-4">
               We create innovative digital solutions that transform businesses and enhance user experiences.
             </p>
@@ -157,7 +161,7 @@ const Footer = () => {
         >
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-foreground/40 text-sm mb-4 md:mb-0">
-              &copy; {currentYear} ABDUL MOIZ. All rights reserved.
+              &copy; {currentYear} AM Solutions. All rights reserved.
             </p>
             <div className="flex space-x-6">
               <a href="#" className="text-foreground/40 hover:text-accent text-sm">Privacy Policy</a>
