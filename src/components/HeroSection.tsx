@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowDown, ChevronRight, Code, Database, Globe, Layers, Smartphone, Server, Shield } from 'lucide-react';
@@ -87,13 +88,6 @@ const HeroSection = () => {
           transition={{ duration: 0.6 }}
           className="mb-6 text-center"
         >
-          <motion.div className="mb-8">
-            <img 
-              src="/lovable-uploads/2b690b19-c895-4ad0-ac07-5132a78687a3.png" 
-              alt="AM Solutions Logo" 
-              className="h-24 md:h-28 mx-auto" 
-            />
-          </motion.div>
           <motion.span 
             className="text-accent text-lg md:text-xl font-medium inline-block"
             animate={{ 

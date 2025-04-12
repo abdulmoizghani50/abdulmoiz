@@ -3,35 +3,59 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, MapPin, Phone, Send } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { useForm } from 'react-hook-form';
 
 const ContactSection = () => {
   const { toast } = useToast();
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
-  });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
+  // Form handling with react-hook-form
+  const { register, handleSubmit, formState: { errors }, reset } = useForm({
+    defaultValues: {
+      name: '',
+      email: '',
+      subject: '',
+      message: ''
+    }
+  });
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const onSubmit = async (data) => {
     setIsSubmitting(true);
     
-    // Simulate form submission
-    setTimeout(() => {
-      toast({
-        title: "Message sent successfully!",
-        description: "I'll get back to you as soon as possible.",
+    try {
+      // Using FormSpree for email handling
+      const response = await fetch('https://formspree.io/f/mpzgpyqe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...data,
+          _replyto: data.email,
+          _subject: `Contact Form: ${data.subject}`,
+          email_to: 'babamoiz289@gmail.com'
+        }),
       });
-      setFormData({ name: '', email: '', subject: '', message: '' });
+
+      if (response.ok) {
+        toast({
+          title: "Message sent successfully!",
+          description: "I'll get back to you as soon as possible.",
+        });
+        reset();
+      } else {
+        throw new Error('Failed to send message');
+      }
+    } catch (error) {
+      toast({
+        title: "Error sending message",
+        description: "Please try again later.",
+        variant: "destructive",
+      });
+      console.error('Contact form error:', error);
+    } finally {
       setIsSubmitting(false);
-    }, 1500);
+    }
   };
 
   return (
@@ -79,7 +103,7 @@ const ContactSection = () => {
                   </div>
                   <div>
                     <h4 className="font-medium text-foreground/90">Email</h4>
-                    <p className="text-foreground/70 text-sm">hello@example.com</p>
+                    <p className="text-foreground/70 text-sm">babamoiz289@gmail.com</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
@@ -123,33 +147,35 @@ const ContactSection = () => {
           >
             <div className="glass-card rounded-xl p-6 md:p-8">
               <h3 className="text-xl font-bold mb-6 text-glow">Send Me a Message</h3>
-              <form onSubmit={handleSubmit} className="space-y-5">
+              <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                   <div>
                     <label htmlFor="name" className="block text-sm text-foreground/70 mb-1">Your Name</label>
                     <input
                       type="text"
                       id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
+                      {...register("name", { required: "Name is required" })}
                       className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 focus:border-accent/50 focus:outline-none focus:ring-1 focus:ring-accent/50 transition-colors text-foreground"
                       placeholder="John Doe"
                     />
+                    {errors.name && <p className="text-xs text-red-400 mt-1">{errors.name.message}</p>}
                   </div>
                   <div>
                     <label htmlFor="email" className="block text-sm text-foreground/70 mb-1">Your Email</label>
                     <input
                       type="email"
                       id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
+                      {...register("email", { 
+                        required: "Email is required",
+                        pattern: {
+                          value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                          message: "Invalid email address"
+                        }
+                      })}
                       className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 focus:border-accent/50 focus:outline-none focus:ring-1 focus:ring-accent/50 transition-colors text-foreground"
                       placeholder="john@example.com"
                     />
+                    {errors.email && <p className="text-xs text-red-400 mt-1">{errors.email.message}</p>}
                   </div>
                 </div>
                 <div>
@@ -157,26 +183,22 @@ const ContactSection = () => {
                   <input
                     type="text"
                     id="subject"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleChange}
-                    required
+                    {...register("subject", { required: "Subject is required" })}
                     className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 focus:border-accent/50 focus:outline-none focus:ring-1 focus:ring-accent/50 transition-colors text-foreground"
                     placeholder="Project Inquiry"
                   />
+                  {errors.subject && <p className="text-xs text-red-400 mt-1">{errors.subject.message}</p>}
                 </div>
                 <div>
                   <label htmlFor="message" className="block text-sm text-foreground/70 mb-1">Message</label>
                   <textarea
                     id="message"
-                    name="message"
                     rows={5}
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
+                    {...register("message", { required: "Message is required" })}
                     className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 focus:border-accent/50 focus:outline-none focus:ring-1 focus:ring-accent/50 transition-colors text-foreground resize-none"
                     placeholder="Your message here..."
                   ></textarea>
+                  {errors.message && <p className="text-xs text-red-400 mt-1">{errors.message.message}</p>}
                 </div>
                 <motion.button
                   whileHover={{ scale: 1.02 }}
