@@ -18,11 +18,11 @@ type Project = {
 const projects: Project[] = [
   {
     id: 1,
-    title: "E-Commerce Dashboard",
-    description: "A full-stack MERN application with real-time analytics, inventory management, and payment processing.",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop",
-    tags: ["React", "MongoDB", "Express", "Node.js", "Redux"],
-    liveUrl: "#",
+    title: "Islami Zone - E-learning Quran",
+    description: "Comprehensive online Quran learning platform with courses for adults and children. Designed responsive UI, implemented with MERN stack (MongoDB, Express, React, Node.js) and deployed to production.",
+    image: "public/lovable-uploads/4f867752-09df-453f-b2ec-f461912fd7df.png",
+    tags: ["React", "MongoDB", "Express", "Node.js", "Responsive Design", "UI/UX"],
+    liveUrl: "https://islamizone.com",
     githubUrl: "#",
     type: "web-dev"
   },
@@ -38,11 +38,11 @@ const projects: Project[] = [
   },
   {
     id: 3,
-    title: "Mobile Banking App Design",
-    description: "A sleek and intuitive banking application UI/UX design focused on accessibility and user experience.",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop",
-    tags: ["Figma", "UI/UX", "Prototyping", "User Research", "Interaction Design"],
-    liveUrl: "#",
+    title: "Islami Zone - UI/UX Design",
+    description: "Complete UI/UX design for an online Quran learning platform featuring Islamic aesthetics, intuitive navigation, and responsive layouts for desktop and mobile devices.",
+    image: "public/lovable-uploads/23e160c7-01c5-44b7-b048-29f32846bf0e.png",
+    tags: ["Figma", "UI/UX", "Wireframing", "User Research", "Islamic Design", "Responsive"],
+    liveUrl: "https://islamizone.com",
     githubUrl: "#",
     type: "ui-ux"
   },
