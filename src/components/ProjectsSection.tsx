@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, Github, X, Layout, Code } from 'lucide-react';
@@ -28,11 +27,11 @@ const projects: Project[] = [
   },
   {
     id: 2,
-    title: "Social Media Platform",
-    description: "A responsive social media application with real-time chat, post sharing, and user authentication.",
-    image: "https://images.unsplash.com/photo-1512486130939-2c4f79935e4f?q=80&w=2080&auto=format&fit=crop",
-    tags: ["React", "Socket.IO", "Express", "MongoDB", "JWT"],
-    liveUrl: "#",
+    title: "Biova Surgicals - E-commerce",
+    description: "A comprehensive e-commerce platform for healthcare products and medical equipment. Implemented with MERN stack and integrated payment gateways, product management, and order tracking systems.",
+    image: "public/lovable-uploads/e7c89d01-9bd7-454b-9ea1-1dda749c002c.png",
+    tags: ["React", "MongoDB", "Express", "Node.js", "E-commerce", "Payment Integration"],
+    liveUrl: "https://biovasurgicals.com",
     githubUrl: "#",
     type: "web-dev"
   },
@@ -53,6 +52,16 @@ const projects: Project[] = [
     image: "public/lovable-uploads/e4a7d2b6-3f0b-4098-b5c8-cbe7d55e2250.png",
     tags: ["Figma", "UI/UX", "Dashboard Design", "Analytics", "Charity Platform", "Data Visualization"],
     liveUrl: "#",
+    githubUrl: "#",
+    type: "ui-ux"
+  },
+  {
+    id: 5,
+    title: "Biova Surgicals - UI/UX Design",
+    description: "Complete UI/UX design for a medical equipment e-commerce platform. The design focuses on showcasing premium surgical instruments with clear categorization, product details, and an intuitive checkout process.",
+    image: "public/lovable-uploads/e7c89d01-9bd7-454b-9ea1-1dda749c002c.png",
+    tags: ["Figma", "UI/UX", "E-commerce Design", "Product Catalog", "Medical Interface", "Responsive Design"],
+    liveUrl: "https://biovasurgicals.com",
     githubUrl: "#",
     type: "ui-ux"
   }
