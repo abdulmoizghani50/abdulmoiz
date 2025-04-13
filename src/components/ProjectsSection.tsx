@@ -48,10 +48,10 @@ const projects: Project[] = [
   },
   {
     id: 4,
-    title: "Travel Website Redesign",
-    description: "A comprehensive travel booking website redesign with improved user flow, visual identity, and conversion optimization.",
-    image: "https://images.unsplash.com/photo-1507608616759-54f48f0af0ee?q=80&w=1974&auto=format&fit=crop",
-    tags: ["Figma", "UI/UX", "Wireframing", "User Testing", "Branding"],
+    title: "Tabbaru - Charity Donation",
+    description: "Comprehensive UI/UX design for a charity donation platform with analytics dashboards, campaign management, and donor tracking features. Features an intuitive interface with data visualization and Islamic charity categories.",
+    image: "public/lovable-uploads/e4a7d2b6-3f0b-4098-b5c8-cbe7d55e2250.png",
+    tags: ["Figma", "UI/UX", "Dashboard Design", "Analytics", "Charity Platform", "Data Visualization"],
     liveUrl: "#",
     githubUrl: "#",
     type: "ui-ux"
