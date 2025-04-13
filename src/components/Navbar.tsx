@@ -65,7 +65,6 @@ const Navbar = () => {
             'services',
             'projects',
             'testimonials',
-            'team',
             'contact'
           ].map((item, index) => (
             <motion.a
@@ -116,8 +115,7 @@ const Navbar = () => {
                 'about', 
                 'services', 
                 'projects', 
-                'testimonials', 
-                'team',
+                'testimonials',
                 'contact'
               ].map((item) => (
                 <a
