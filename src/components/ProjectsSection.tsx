@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, Github, X, Layout, Code } from 'lucide-react';
@@ -28,9 +29,9 @@ const projects: Project[] = [
   {
     id: 2,
     title: "Biova Surgicals - E-commerce",
-    description: "A comprehensive e-commerce platform for healthcare products and medical equipment. Implemented with MERN stack and integrated payment gateways, product management, and order tracking systems.",
+    description: "A comprehensive e-commerce platform for healthcare products and medical equipment. Implemented with MERN stack and integrated product management and order tracking systems.",
     image: "public/lovable-uploads/e7c89d01-9bd7-454b-9ea1-1dda749c002c.png",
-    tags: ["React", "MongoDB", "Express", "Node.js", "E-commerce", "Payment Integration"],
+    tags: ["React", "MongoDB", "Express", "Node.js", "E-commerce"],
     liveUrl: "https://biovasurgicals.com",
     githubUrl: "#",
     type: "web-dev"
@@ -346,16 +347,6 @@ const ProjectsSection = () => {
                     whileTap={{ scale: 0.95 }}
                   >
                     {activeProject.type === "ui-ux" ? "View Design" : "Live Demo"}
-                  </motion.a>
-                  <motion.a 
-                    href={activeProject.githubUrl} 
-                    className="px-5 py-2 rounded-lg bg-transparent border border-white/20 text-white font-medium hover:bg-white/5 transition-all flex items-center gap-2"
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    whileHover={{ scale: 1.05, backgroundColor: "rgba(255,255,255,0.1)" }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <Github size={18} /> {activeProject.type === "ui-ux" ? "Project Files" : "View Code"}
                   </motion.a>
                 </motion.div>
               </motion.div>
