@@ -112,7 +112,7 @@ const HeroSection = () => {
               >
                 <motion.span 
                   className="block"
-                  whileHover={{ scale: 1.02, color: "#9b87f5", transition: { duration: 0.3 } }}
+                  whileHover={{ scale: 1.02, color: "#FDAA28", transition: { duration: 0.3 } }}
                 >
                   {headlines[currentSlide]}
                 </motion.span>
@@ -146,7 +146,7 @@ const HeroSection = () => {
         >
           <motion.a
             href="#services"
-            whileHover={{ scale: 1.05, backgroundColor: "#33a8b5" }}
+            whileHover={{ scale: 1.05, backgroundColor: "#FDAA28" }}
             whileTap={{ scale: 0.95 }}
             className="px-8 py-4 rounded-lg bg-accent text-accent-foreground font-medium shadow-lg hover:shadow-accent/20 transition-all flex items-center justify-center gap-2 w-full sm:w-auto"
           >

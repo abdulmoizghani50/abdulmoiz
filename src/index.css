@@ -14,7 +14,7 @@
     --popover: 250 25% 8%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 25 100% 52%;
+    --primary: 39 100% 57%;
     --primary-foreground: 250 20% 5%;
 
     --secondary: 250 15% 12%;
@@ -23,7 +23,7 @@
     --muted: 250 15% 12%;
     --muted-foreground: 215 20% 65%;
 
-    --accent: 32 98% 56%;
+    --accent: 39 100% 57%;
     --accent-foreground: 250 20% 5%;
 
     --destructive: 0 62% 30%;
@@ -31,7 +31,7 @@
 
     --border: 250 15% 12%;
     --input: 250 15% 12%;
-    --ring: 25 100% 52%;
+    --ring: 39 100% 57%;
 
     --radius: 0.75rem;
   }
@@ -55,15 +55,15 @@
 
 @layer utilities {
   .text-glow {
-    text-shadow: 0 0 10px rgba(254, 133, 5, 0.7);
+    text-shadow: 0 0 10px rgba(253, 170, 40, 0.7);
   }
   
   .box-glow {
-    box-shadow: 0 0 15px rgba(254, 133, 5, 0.5);
+    box-shadow: 0 0 15px rgba(253, 170, 40, 0.5);
   }
 
   .text-gradient {
-    background: linear-gradient(to right, #fe8505, #fdaa28);
+    background: linear-gradient(to right, #fe8505, #FDAA28);
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
@@ -74,7 +74,7 @@
   }
   
   .neo-border {
-    @apply border border-white/10 shadow-[0_0_15px_rgba(254,133,5,0.3)];
+    @apply border border-white/10 shadow-[0_0_15px_rgba(253,170,40,0.3)];
   }
 }
 
