@@ -57,13 +57,12 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        glow: {
-          orange: "#FF8A00",
-          "orange-light": "#FF8A00",
-          purple: "#1a1126",
-          blue: "#0077b6",
-          teal: "#06d6a0",
-          pink: "#e63946",
+        devspark: {
+          dark1: "#0A0514",
+          dark2: "#221933",
+          text: "#D7CAE8",
+          orange1: "#FE8606",
+          orange2: "#FDA927",
         },
       },
       borderRadius: {
@@ -134,7 +133,7 @@ export default {
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "hero-pattern": "url('/grid-pattern.svg')",
-        "orange-gradient": "linear-gradient(to right, #FF8A00, #FF8A00)",
+        "orange-gradient": "linear-gradient(to right, #FE8606, #FDA927)",
       },
     },
   },

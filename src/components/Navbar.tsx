@@ -45,9 +45,9 @@ const Navbar = () => {
         >
           <a href="#home" className="flex items-center">
             <img 
-              src="/lovable-uploads/da5afdf9-cba6-43b4-9b96-5dffbd2cc205.png" 
+              src="/lovable-uploads/d64fa4fa-0c32-4192-bd95-a9bb1bf81b05.png" 
               alt="Dev Spark Logo" 
-              className="h-10 md:h-12" 
+              className="h-16 md:h-20 w-auto" 
             />
           </a>
         </motion.div>
@@ -70,19 +70,19 @@ const Navbar = () => {
             <motion.a
               key={item}
               href={`#${item}`}
-              className="text-foreground/80 hover:text-accent transition-colors relative group font-medium"
+              className="text-devspark-text hover:text-devspark-orange1 transition-colors relative group font-medium"
               whileHover={{ scale: 1.05 }}
               transition={{ type: 'spring', stiffness: 400, damping: 10 }}
             >
               <span className="capitalize">{item}</span>
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300"></span>
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-devspark-orange1 to-devspark-orange2 group-hover:w-full transition-all duration-300"></span>
             </motion.a>
           ))}
           <motion.a
             href="#contact"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="px-5 py-2 rounded-lg bg-accent text-accent-foreground shadow-md hover:shadow-lg transition-all font-medium"
+            className="px-6 py-3 rounded-lg bg-gradient-to-r from-devspark-orange1 to-devspark-orange2 text-white shadow-lg hover:shadow-xl hover:shadow-devspark-orange1/20 transition-all font-medium"
           >
             Get Started
           </motion.a>
@@ -93,7 +93,7 @@ const Navbar = () => {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.3 }}
-          className="md:hidden text-foreground"
+          className="md:hidden text-devspark-text"
           onClick={toggleMenu}
           aria-label="Toggle menu"
         >
@@ -107,7 +107,7 @@ const Navbar = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
-            className="absolute top-full left-0 w-full bg-background/95 backdrop-blur-md py-4 shadow-lg md:hidden border-t border-white/10"
+            className="absolute top-full left-0 w-full bg-devspark-dark2/95 backdrop-blur-md py-4 shadow-lg md:hidden border-t border-white/10"
           >
             <nav className="flex flex-col space-y-4 px-6">
               {[
@@ -121,7 +121,7 @@ const Navbar = () => {
                 <a
                   key={item}
                   href={`#${item}`}
-                  className="text-foreground/80 hover:text-accent py-2 transition-colors capitalize font-medium"
+                  className="text-devspark-text hover:text-devspark-orange1 py-2 transition-colors capitalize font-medium"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {item}
@@ -129,7 +129,7 @@ const Navbar = () => {
               ))}
               <a 
                 href="#contact" 
-                className="mt-2 px-4 py-2 rounded-lg bg-accent text-accent-foreground shadow-md font-medium"
+                className="mt-2 px-4 py-2 rounded-lg bg-gradient-to-r from-devspark-orange1 to-devspark-orange2 text-white shadow-md font-medium"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Get Started
