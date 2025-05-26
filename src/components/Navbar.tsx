@@ -45,8 +45,8 @@ const Navbar = () => {
         >
           <a href="#home" className="flex items-center">
             <img 
-              src="/lovable-uploads/2b690b19-c895-4ad0-ac07-5132a78687a3.png" 
-              alt="AM Solutions Logo" 
+              src="/lovable-uploads/6851ffca-d3b0-4cd3-9735-e653946b97cb.png" 
+              alt="Dev Spark Logo" 
               className="h-10 md:h-12" 
             />
           </a>

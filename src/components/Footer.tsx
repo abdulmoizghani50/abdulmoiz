@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Facebook, Github, Instagram, Linkedin, Mail, MapPin, Phone, Twitter } from 'lucide-react';
@@ -18,8 +17,8 @@ const Footer = () => {
           >
             <div className="mb-6">
               <img 
-                src="/lovable-uploads/2b690b19-c895-4ad0-ac07-5132a78687a3.png" 
-                alt="AM Solutions Logo" 
+                src="/lovable-uploads/6851ffca-d3b0-4cd3-9735-e653946b97cb.png" 
+                alt="Dev Spark Logo" 
                 className="h-12" 
               />
             </div>
@@ -161,7 +160,7 @@ const Footer = () => {
         >
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-foreground/40 text-sm mb-4 md:mb-0">
-              &copy; {currentYear} AM Solutions. All rights reserved.
+              &copy; {currentYear} Dev Spark. All rights reserved.
             </p>
             <div className="flex space-x-6">
               <a href="#" className="text-foreground/40 hover:text-accent text-sm">Privacy Policy</a>
