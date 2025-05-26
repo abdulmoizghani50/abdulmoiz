@@ -19,6 +19,10 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        'sans': ['Inter', 'system-ui', 'sans-serif'],
+        'heading': ['Space Grotesk', 'Inter', 'system-ui', 'sans-serif'],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -54,9 +58,9 @@ export default {
           foreground: "hsl(var(--card-foreground))",
         },
         glow: {
-          orange: "#FDAA28",
-          "orange-light": "#fdaa28",
-          purple: "#0a0514",
+          orange: "#FF8A00",
+          "orange-light": "#FF8A00",
+          purple: "#1a1126",
           blue: "#0077b6",
           teal: "#06d6a0",
           pink: "#e63946",
@@ -130,7 +134,7 @@ export default {
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "hero-pattern": "url('/grid-pattern.svg')",
-        "orange-gradient": "linear-gradient(to right, #fe8505, #FDAA28)",
+        "orange-gradient": "linear-gradient(to right, #FF8A00, #FF8A00)",
       },
     },
   },

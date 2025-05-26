@@ -45,7 +45,7 @@ const Navbar = () => {
         >
           <a href="#home" className="flex items-center">
             <img 
-              src="/lovable-uploads/6851ffca-d3b0-4cd3-9735-e653946b97cb.png" 
+              src="/lovable-uploads/da5afdf9-cba6-43b4-9b96-5dffbd2cc205.png" 
               alt="Dev Spark Logo" 
               className="h-10 md:h-12" 
             />
@@ -70,7 +70,7 @@ const Navbar = () => {
             <motion.a
               key={item}
               href={`#${item}`}
-              className="text-foreground/80 hover:text-accent transition-colors relative group"
+              className="text-foreground/80 hover:text-accent transition-colors relative group font-medium"
               whileHover={{ scale: 1.05 }}
               transition={{ type: 'spring', stiffness: 400, damping: 10 }}
             >
@@ -82,7 +82,7 @@ const Navbar = () => {
             href="#contact"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="px-5 py-2 rounded-lg bg-accent text-accent-foreground shadow-md hover:shadow-lg transition-all"
+            className="px-5 py-2 rounded-lg bg-accent text-accent-foreground shadow-md hover:shadow-lg transition-all font-medium"
           >
             Get Started
           </motion.a>
@@ -121,7 +121,7 @@ const Navbar = () => {
                 <a
                   key={item}
                   href={`#${item}`}
-                  className="text-foreground/80 hover:text-accent py-2 transition-colors capitalize"
+                  className="text-foreground/80 hover:text-accent py-2 transition-colors capitalize font-medium"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {item}
@@ -129,7 +129,7 @@ const Navbar = () => {
               ))}
               <a 
                 href="#contact" 
-                className="mt-2 px-4 py-2 rounded-lg bg-accent text-accent-foreground shadow-md"
+                className="mt-2 px-4 py-2 rounded-lg bg-accent text-accent-foreground shadow-md font-medium"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Get Started

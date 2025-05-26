@@ -5,33 +5,33 @@
 
 @layer base {
   :root {
-    --background: 250 20% 5%;
+    --background: 240 15% 8%;
     --foreground: 210 40% 98%;
 
-    --card: 250 25% 8%;
+    --card: 240 20% 10%;
     --card-foreground: 210 40% 98%;
 
-    --popover: 250 25% 8%;
+    --popover: 240 20% 10%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 39 100% 57%;
-    --primary-foreground: 250 20% 5%;
+    --primary: 25 100% 50%;
+    --primary-foreground: 240 15% 8%;
 
-    --secondary: 250 15% 12%;
+    --secondary: 240 15% 12%;
     --secondary-foreground: 210 40% 98%;
 
-    --muted: 250 15% 12%;
+    --muted: 240 15% 12%;
     --muted-foreground: 215 20% 65%;
 
-    --accent: 39 100% 57%;
-    --accent-foreground: 250 20% 5%;
+    --accent: 25 100% 50%;
+    --accent-foreground: 240 15% 8%;
 
     --destructive: 0 62% 30%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 250 15% 12%;
-    --input: 250 15% 12%;
-    --ring: 39 100% 57%;
+    --border: 240 15% 15%;
+    --input: 240 15% 15%;
+    --ring: 25 100% 50%;
 
     --radius: 0.75rem;
   }
@@ -43,27 +43,31 @@
   }
   
   body {
-    @apply bg-background text-foreground antialiased;
+    @apply bg-background text-foreground antialiased font-sans;
     font-feature-settings: "ss01", "ss02", "cv01", "cv02", "cv03";
-    background: linear-gradient(135deg, #0a0514 0%, #1a0b1f 50%, #0a0514 100%);
+    background: linear-gradient(135deg, #1a1126 0%, #2a1f3d 50%, #1a1126 100%);
   }
 
   html {
     @apply scroll-smooth;
   }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
 }
 
 @layer utilities {
   .text-glow {
-    text-shadow: 0 0 10px rgba(253, 170, 40, 0.7);
+    text-shadow: 0 0 20px rgba(255, 138, 0, 0.6), 0 0 40px rgba(255, 138, 0, 0.4);
   }
   
   .box-glow {
-    box-shadow: 0 0 15px rgba(253, 170, 40, 0.5);
+    box-shadow: 0 0 25px rgba(255, 138, 0, 0.4), 0 0 50px rgba(255, 138, 0, 0.2);
   }
 
   .text-gradient {
-    background: linear-gradient(to right, #fe8505, #FDAA28);
+    background: linear-gradient(135deg, #FF8A00 0%, #FFB347 100%);
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
@@ -74,7 +78,7 @@
   }
   
   .neo-border {
-    @apply border border-white/10 shadow-[0_0_15px_rgba(253,170,40,0.3)];
+    @apply border border-white/10 shadow-[0_0_20px_rgba(255,138,0,0.3)];
   }
 }
 
