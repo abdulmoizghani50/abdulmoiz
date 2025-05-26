@@ -54,7 +54,9 @@ export default {
           foreground: "hsl(var(--card-foreground))",
         },
         glow: {
-          purple: "#9d4edd",
+          orange: "#fe8505",
+          "orange-light": "#fdaa28",
+          purple: "#0a0514",
           blue: "#0077b6",
           teal: "#06d6a0",
           pink: "#e63946",
@@ -128,6 +130,7 @@ export default {
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "hero-pattern": "url('/grid-pattern.svg')",
+        "orange-gradient": "linear-gradient(to right, #fe8505, #fdaa28)",
       },
     },
   },

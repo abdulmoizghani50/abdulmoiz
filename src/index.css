@@ -5,33 +5,33 @@
 
 @layer base {
   :root {
-    --background: 222 47% 6%;
+    --background: 250 20% 5%;
     --foreground: 210 40% 98%;
 
-    --card: 224 71% 4%;
+    --card: 250 25% 8%;
     --card-foreground: 210 40% 98%;
 
-    --popover: 224 71% 4%;
+    --popover: 250 25% 8%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 252 87% 65%;
-    --primary-foreground: 222 47% 11%;
+    --primary: 25 100% 52%;
+    --primary-foreground: 250 20% 5%;
 
-    --secondary: 217 32% 17%;
+    --secondary: 250 15% 12%;
     --secondary-foreground: 210 40% 98%;
 
-    --muted: 217 32% 17%;
+    --muted: 250 15% 12%;
     --muted-foreground: 215 20% 65%;
 
-    --accent: 183 83% 42%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 32 98% 56%;
+    --accent-foreground: 250 20% 5%;
 
     --destructive: 0 62% 30%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 217 32% 17%;
-    --input: 217 32% 17%;
-    --ring: 224 71% 40%;
+    --border: 250 15% 12%;
+    --input: 250 15% 12%;
+    --ring: 25 100% 52%;
 
     --radius: 0.75rem;
   }
@@ -39,12 +39,13 @@
 
 @layer base {
   * {
-    @apply border-border selection:bg-purple-500/20 selection:text-white;
+    @apply border-border selection:bg-orange-500/20 selection:text-white;
   }
   
   body {
     @apply bg-background text-foreground antialiased;
     font-feature-settings: "ss01", "ss02", "cv01", "cv02", "cv03";
+    background: linear-gradient(135deg, #0a0514 0%, #1a0b1f 50%, #0a0514 100%);
   }
 
   html {
@@ -54,15 +55,18 @@
 
 @layer utilities {
   .text-glow {
-    text-shadow: 0 0 10px rgba(161, 99, 247, 0.7);
+    text-shadow: 0 0 10px rgba(254, 133, 5, 0.7);
   }
   
   .box-glow {
-    box-shadow: 0 0 15px rgba(161, 99, 247, 0.5);
+    box-shadow: 0 0 15px rgba(254, 133, 5, 0.5);
   }
 
   .text-gradient {
-    @apply bg-gradient-to-r from-blue-400 via-purple-500 to-accent bg-clip-text text-transparent;
+    background: linear-gradient(to right, #fe8505, #fdaa28);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
   }
   
   .glass-card {
@@ -70,7 +74,7 @@
   }
   
   .neo-border {
-    @apply border border-white/10 shadow-[0_0_15px_rgba(161,99,247,0.3)];
+    @apply border border-white/10 shadow-[0_0_15px_rgba(254,133,5,0.3)];
   }
 }
 
@@ -89,4 +93,3 @@
 .animate-delay-800 {
   animation-delay: 800ms;
 }
-
